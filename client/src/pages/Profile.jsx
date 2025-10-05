@@ -6,6 +6,7 @@ import UserProfileInfo from '../components/UserProfileInfo'
 import PostCard from '../components/PostCard'
 import moment from 'moment'
 import ProfileModel from '../components/ProfileModel'
+import ReactPlayer from 'react-player'
 
 const Profile = () => {
 
@@ -67,25 +68,52 @@ const Profile = () => {
               </div>
             )}
 
-            {activeTab === 'media' && (
-              <div className='flex flex-wrap gap-1 justify-center mt-6 max-w-6xl'>
-                {
-                  posts.filter((post) => post.image_urls.length > 0).map((post) => (
-                    <React.Fragment key={post._id}>
-                      {post.image_urls.map((image, index) => (
-                        <Link target='_blank' to={image} key={post._id + '-' + index} className='relative group'>
-                          <img src={image} className='w-62 aspect-video object-cover'alt=""/>
-                          <p className='absolute bottom-0 right-0 text-xs p-1 px-3 backdrop-blur-xl text-white 
-                          opacity-0 group-hover:opacity-100 transition duration-300'>
-                            Posted {moment(post.createdAt).fromNow()}
-                          </p>
-                        </Link>
-                      ))}
-                    </React.Fragment>
-                  ))
-                }
-              </div>
-            )}
+           {/* Media */}
+        {activeTab === "media" && (
+          <div className="flex flex-wrap gap-1 justify-between mt-6 max-w-6xl">
+            {posts
+              .filter((post) => post.image_urls.length > 0)
+              .map((post) => (
+                <React.Fragment key={post._id}>
+                  {post.image_urls.map((src, index) => (
+                    <Link
+                      target="_blank"
+                      to={src}
+                      key={post._id + "-" + index}
+                      className="relative group"
+                    >
+                      {post.post_type === "video" ? (
+                        <div className='flex flex-col bg-white'>
+                          <ReactPlayer
+                            src={src}
+                            width="250px"
+                            height="140px"
+                            controls = {true}
+                            className="rounded-lg overflow-hidden"
+                          />
+                        </div>
+                      ) : (
+                          <img
+                            src={src}
+                            className="w-72 aspect-video object-cover rounded-lg"
+                            alt="media"
+                          />
+                      )}
+
+                      {/* Overlay text */}
+                      <p
+                        className="absolute bottom-0 right-0 text-xs p-1 px-3 backdrop-blur-xl text-white 
+                                  opacity-0 group-hover:opacity-100 transition duration-300"
+                      >
+                        Posted {moment(post.createdAt).fromNow()}
+                      </p>
+                    </Link>
+                  ))}
+                </React.Fragment>
+              ))}
+          </div>
+        )}
+
         </div>
       </div>
       

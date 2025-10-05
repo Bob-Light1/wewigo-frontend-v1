@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { dummyUserData } from '../assets/assets'
-import { Image, X } from 'lucide-react'
+import { Image, VideoIcon, X } from 'lucide-react'
 import toast from 'react-hot-toast'
 
 const CreatePost = () => {
 
   const [content, setContent] = useState('')
   const [images, setImages] = useState([])
+  const [videos, setVideos] = useState([])
   const [loading, setLoading] = useState(false)
 
   const user = dummyUserData;  
@@ -51,7 +52,7 @@ const CreatePost = () => {
             value={content}
           />
 
-          {/* Images */}
+          {/* Upload Images */}
           {
             images.length > 0 && (
               <div className='flex flex-wrap gap-2 mt-4'>
@@ -71,14 +72,51 @@ const CreatePost = () => {
             )
           }
 
+          {/* Upload Videos */}
+          {
+            videos.length > 0 && (
+              <div className='flex flex-wrap gap-2 mt-4'>
+                {videos.map((video, j) => (
+                  <div key={j} className='relative group'>
+                    <video 
+                      src={URL.createObjectURL(video)} 
+                      className="h-20 rounded-md" 
+                      muted 
+                      autoPlay 
+                      loop
+                    />
+                    <div 
+                      onClick={() => setVideos(videos.filter((_, index) => index !== j ))}
+                      className='absolute hidden group-hover:flex justify-center items-center top-0 right-0 bottom-0 
+                      left-0 bg-black/40 rounded-md cursor-pointer' 
+                    >
+                      <X className='w-6 h-6 text-white'/>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )
+          }
+
           {/* Bottom Bar */}
           <div className='flex items-center justify-between pt-3 border-t border-gray-300'>
-            <label 
-              htmlFor="images" 
-              className='flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 transition cursor-pointer'
-            >
-              <Image className='size-6'/>
-            </label>
+            <div className='flex items-center justify-center gap-2 divide-x border-2 overflow-hidden'>
+              <label 
+                htmlFor="images" 
+                aria-label="Uploader des images"
+                className='flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 transition cursor-pointer'
+              >
+                <Image className='size-6'/>
+              </label>
+
+              <label 
+                htmlFor="videos" 
+                aria-label="Uploader des videos"
+                className='flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 transition cursor-pointer'
+              >
+                <VideoIcon className='size-8 ml-2'/>
+              </label>
+            </div>
 
             <input 
               type="file" 
@@ -86,7 +124,15 @@ const CreatePost = () => {
               accept='image/*'
               hidden
               multiple
-              onChange={(e) => setImages([...images, ...e.target.files])}
+              onChange={(e) => setImages([...images, ...Array.from(e.target.files)])}
+            />
+
+            <input 
+              type='file'
+              id='videos'
+              accept='video/*'
+              hidden
+              onChange={(e) => setVideos([...images, ...Array.from(e.target.files)])}
             />
 
             <button 
@@ -99,6 +145,7 @@ const CreatePost = () => {
                   error: <p>Post Not Added</p>,
                 }
               )}
+
               className='text-sm bg-gradient-to-r from-[#ff9058] to-[#ff6e25] hover:from-[#ff6e25] hover:to-[#ff5d0b] 
               active:scale-95 transition text-white font-medium px-8 py-2 rounded-md cursor-pointer'>
               Publish Post
