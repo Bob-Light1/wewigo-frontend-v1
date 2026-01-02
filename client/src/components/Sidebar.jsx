@@ -27,8 +27,8 @@ const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
 
             <Link 
               to='/create-post' 
-              className='flex items-center justify-center gap-2 py-2.5 mt-6 mx-6 rounded-lg bg-gradient-to-r 
-              from-[#346faa] to-[#4989c8] hover:from-[#3A6FA5] hover:to-[#2E587F] active:scale-95 transition text-white cursor-pointer'
+              className='flex items-center justify-center gap-2 py-2.5 mt-6 mx-6 rounded-lg bg-gray-100
+              hover:bg-gray-200 active:scale-95 transition text-black cursor-pointer'
             >
               <CirclePlus className='w-5 h-5'/>
               Create Post
