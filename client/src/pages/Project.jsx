@@ -32,7 +32,7 @@ const Project = () => {
   return !loading ? (
     <div className='h-full overflow-y-scroll no-scrollbar py-10 xl:pr-5 flex items-start justify-center xl:gap-8 mx-4 px-4'>
         <div className='mx-auto p-6'>
-            <div className='mb-16 text-center'>
+            <div className='mt-6 mb-16 text-center'>
                 <h1 className='text-3xl font-bold'>All Your Projects</h1>
             </div>
             <div className='flex items-center justify-center gap-10 m-4'>
@@ -44,11 +44,11 @@ const Project = () => {
                 </button>
             </div>
 
-            <div className='pl-6 text-center'>
+            <div className='pl-6 mb-4 text-center'>
                 <span className='text-md font-semibold'>Chose a project to work on :</span>
             </div>
 
-            <div className='max-w-7xl flex flex-wrap p-4 gap-4'>
+            <div className='max-w-7xl flex flex-wrap items-center justify-center p-4 gap-6'>
                 {projects.map((project) => (
                     <ProjectCard key={project._id} project={project}/>
                 ))}

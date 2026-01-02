@@ -1,11 +1,8 @@
 import logo from './logo.png'
 import sample_cover from './sample_cover.jpg'
-import sample_profile from './sample_profile.jpg'
 import bgImage from './bgImage.png'
-import group_users from './group_users.png'
 import { Home, UsersRound, Search, UserIcon, Link2, Store, NotebookPen, LineChart} from 'lucide-react'
 import sponsored_img from './sponsored_img.png'
-import group_youth from './group_youth.jpg'
 
 
 export const bagImage = import.meta.glob('./bags/*.{png,jpg,jpeg,svg}', { eager: true }); 
@@ -15,8 +12,12 @@ export const menDress = import.meta.glob('./menDress/*.{png,jpg,jpeg,svg}', { ea
 export const womenDress = import.meta.glob('./womenDress/*.{png,jpg,jpeg,svg}', { eager: true }); 
 export const watch = import.meta.glob('./watch/*.{png,jpg,jpeg,svg}', { eager: true });
 export const project = import.meta.glob('./projects/*.{png,jpg,jpeg,svg,avif}', { eager: true });
+export const social = import.meta.glob('./social/*.{png,jpg,jpeg,svg,avif}', { eager: true });
+export const travel = import.meta.glob('./travel/*.{png,jpg,jpeg,svg,avif}', { eager: true });
+export const user = import.meta.glob('./users/*.{png,jpg,jpeg,svg,avif}', { eager: true });
+export const background = import.meta.glob('./backgrounds/*.{png,jpg,jpeg,svg,avif}',{eager: true});
 
-
+ 
 const bagImages = Object.values(bagImage).map(img => img.default || img);
 const jolleryImages = Object.values(jollery).map(img => img.default || img);
 const shoesImages = Object.values(shoes).map(img => img.default || img);
@@ -24,14 +25,15 @@ const menDressImages = Object.values(menDress).map(img => img.default || img);
 const womenDressImages = Object.values(womenDress).map(img => img.default || img);
 const watchImages = Object.values(watch).map(img => img.default || img);
 const projectImages = Object.values(project).map(img => img.default || img);
+const socialImages = Object.values(social).map(img => img.default || img);
+const travelImages = Object.values(travel).map(img => img.default || img);
+const userImages = Object.values(user).map(img => img.default || img);
+const backgoundImages = Object.values(background).map(img => img.default || img);
 
 export const assets = {
     logo,
     sample_cover,
-    sample_profile,
     bgImage,
-    group_users,
-    group_youth,
     sponsored_img
 }
 
@@ -52,7 +54,7 @@ export const dummyUserData = {
     "full_name": "John Warren",
     "username": "john_warren",
     "bio": "🌍 Dreamer | 📚 Learner | 🚀 Doer\r\nExploring life one step at a time.\r\n✨ Staying curious. Creating with purpose.",
-    "profile_picture": sample_profile,
+    "profile_picture": userImages[0],
     "cover_photo": sample_cover,
     "location": "New York, NY",
     "followers": ["user_2", "user_3"],
@@ -69,7 +71,7 @@ const dummyUser2Data = {
     _id: "user_2",
     username: "Richard Hendricks",
     full_name: "Richard Hendricks",
-    profile_picture: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
+    profile_picture: userImages[15],
 }
 
 const dummyUser3Data = {
@@ -77,7 +79,7 @@ const dummyUser3Data = {
     _id: "user_3",
     username: "alexa_james",
     full_name: "Alexa james",
-    profile_picture: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&h=200&auto=format&fit=crop",
+    profile_picture: userImages[2],
 }
 
 const dummyUser4Data = {
@@ -85,7 +87,7 @@ const dummyUser4Data = {
     _id: "user_4",
     username: "alex_janie",
     full_name: "Alex janies",
-    profile_picture: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&h=200&auto=format&fit=crop",
+    profile_picture: userImages[16],
 }
 
 export const dummyStoriesData = [
@@ -101,7 +103,7 @@ export const dummyStoriesData = [
     },
     {
         "_id": "688340046e4b42b685068a73",
-        "user": dummyUserData,
+        "user": dummyUser2Data,
         "content": "",
         "media_url": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
         "media_type": "image",
@@ -111,7 +113,7 @@ export const dummyStoriesData = [
     },
     {
         "_id": "68833fe96e4b42b685068a5e",
-        "user": dummyUserData,
+        "user": dummyUser3Data,
         "content": "",
         "media_url": "https://videos.pexels.com/video-files/14447442/14447442-hd_1080_1920_30fps.mp4",
         "media_type": "video",
@@ -121,7 +123,7 @@ export const dummyStoriesData = [
     },
     {
         "_id": "68833e136e4b42b685068937",
-        "user": dummyUserData,
+        "user": dummyUser4Data,
         "content": "",
         "media_url": "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg",
         "media_type": "image",
@@ -131,7 +133,7 @@ export const dummyStoriesData = [
     },
     {
         "_id": "68833d706e4b42b685068875",
-        "user": dummyUserData,
+        "user": dummyUser2Data,
         "content": "🤫 Not every moment needs to be loud. Sometimes, the best things happen in silence — in drafts 📝, in progress 🧪, in planning 📊. That's where I am right now.",
         "media_url": "",
         "media_type": "text",
@@ -157,7 +159,7 @@ export const dummyPostsData = [
         "_id": "68773e977db16954a783839c",
         "user": dummyUserData,
         "content": "We're a small #team with a big vision — working day and night to turn dreams into products, and #products into something people love.",
-        "image_urls": [group_youth],
+        "image_urls": [userImages[6]],
         "post_type": "text_with_image",
         "likes_count": [],
         "createdAt": "2025-09-04T05:54:31.191Z",
@@ -165,7 +167,7 @@ export const dummyPostsData = [
     },
     {
         "_id": "686e6d0407845749500c24cd",
-        "user": dummyUserData,
+        "user": dummyUser2Data,
         "content": "Unlock your potential—every small step counts. Stay consistent, stay focused, and trust the process. Growth takes time, but every day is a new chance to be better than yesterday. 🌱✨\r\n\r\n#Motivation #GrowthMindset #DailyInspiration #StayFocused #LevelUp #PositiveVibes #KeepGoing #SelfImprovement #MindsetMatters #SuccessJourney",
         "image_urls": [],
         "post_type": "text",
@@ -175,7 +177,7 @@ export const dummyPostsData = [
     },
     {
         "_id": "686e6b21de877d29cf02e2a7",
-        "user": dummyUserData,
+        "user": dummyUser3Data,
         "content": "This is a sample paragraph with some #hashtags like #socialmedia and #marketing. Let's find them!",
         "image_urls": ["https://www.youtube.com/watch?v=3i1OB6wKYms"],
         "post_type": "video", 
@@ -185,7 +187,7 @@ export const dummyPostsData = [
     },
     {
         "_id": "686e3e47ba0cf0fecba19947",
-        "user": dummyUserData,
+        "user": dummyUser4Data,
         "content": "",
         "image_urls": [
             "https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg"
@@ -211,7 +213,7 @@ export const dummyPostsData = [
     },
     {
         "_id": "686e361389841ba9f2633201",
-        "user": dummyUserData,
+        "user": dummyUser3Data,
         "content": "Hello, Everyone this is my first Post",
         "image_urls": ["https://www.youtube.com/watch?v=uFgNbl8nOTs"],
         "post_type": "video",
@@ -412,7 +414,7 @@ export const dummyProductsData = [
       description: "Préparer tous les documents, suivre les cours d'allemand et organiser le départ.",
       status: "En cours",
       deadline: "2026-01-15",
-      picture: projectImages[7],
+      picture: travelImages[0],
       progress: 45, // %
       tasks: [
         { id: "task_001", title: "Inscription aux cours d’allemand", done: true },
@@ -500,7 +502,7 @@ export const dummyRecentMessagesData = [
         "_id": "6878cc3c17a54e4d3748012f",
         "from_user_id": dummyUserData,
         "to_user_id": dummyUserData,
-        "text": "This is a Samsung Tablet",
+        "text": "This is a travel opportunity",
         "message_type": "text",
         "media_url": "",
         "createdAt": "2025-09-03T10:11:08.437Z",
@@ -527,7 +529,7 @@ export const dummyMessagesData = [
         "to_user_id": "user_2zdFoZib5lNr614LgkONdD8WG32",
         "text": "",
         "message_type": "image",
-        "media_url": "https://images.pexels.com/photos/106341/pexels-photo-106341.jpeg",
+        "media_url": travelImages[0],
         "createdAt": "2025-09-03T10:10:58.524Z",
         "updatedAt": "2025-09-04T10:43:50.346Z",
         "seen": true
@@ -536,7 +538,7 @@ export const dummyMessagesData = [
         "_id": "6878cc3c17a54e4d3748012f",
         "from_user_id": "user_2zwZSCMRXQ9GaEEVLgm6akQo96i",
         "to_user_id": "user_2zdFoZib5lNr614LgkONdD8WG32",
-        "text": "This is a Samsung Tablet",
+        "text": "This is a travel opportunity",
         "message_type": "text",
         "media_url": "",
         "createdAt": "2025-09-03T10:11:08.437Z",
@@ -547,7 +549,7 @@ export const dummyMessagesData = [
         "_id": "68835ffc6e4b42b685069def",
         "from_user_id": "user_2zdFoZib5lNr614LgkONdD8WG32",
         "to_user_id": "user_2zwZSCMRXQ9GaEEVLgm6akQo96i",
-        "text": "yah , this tablet is good",
+        "text": "yah , i love this. It loooks great",
         "message_type": "text",
         "media_url": "",
         "seen": false,
@@ -558,7 +560,7 @@ export const dummyMessagesData = [
         "_id": "6878cc2817a54e4d3748010c",
         "from_user_id": "user_2zdFoZib5lNr614LgkONdD8WG32",
         "to_user_id": "user_2zwZSCMRXQ9GaEEVLgm6akQo96i",
-        "text": "you can purchase it from amazon",
+        "text": "you can begin your trainings in Global SprachInstitut.",
         "message_type": "text",
         "media_url": "",
         "createdAt": "2025-09-03T10:10:48.956Z",
@@ -567,9 +569,6 @@ export const dummyMessagesData = [
     },
 ]
 
-export const dummyProducts = [
-    {}, {}, {}, {}, {}
-]
 
 export const dummyConnectionsData = [
     dummyUserData,
